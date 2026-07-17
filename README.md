@@ -21,17 +21,31 @@ cd gen_srs_public
 
 ## Installation
 
-Create and activate a Conda environment with Python `3.12.12` (tested), then install the package dependencies. Newer Python versions may also work, but they have not been officially tested yet:
+Create and activate a Conda environment with Python `3.12.12` (tested), then install the package dependencies. Newer Python versions may also work, but they have not been officially tested yet.
 
-```
+### Linux / Windows with NVIDIA GPU (CUDA 13+)
+
+`requirements.txt` is configured for PyTorch CUDA 13 wheels.
+
+```bash
 conda create -n <env_name> python=3.12.12
 conda activate <env_name>
 conda install pip
-pip install -r <requirements.txt or requirements.cuda.txt>
+pip install -r requirements.txt
 pip install -e .
 ```
 
-Use `requirements.txt` for CPU installs, including macOS (`OSX`) systems. Use `requirements.cuda.txt` on systems with NVIDIA GPUs and CUDA support.
+### macOS
+
+On macOS, install PyTorch from PyPI first, then install this package. The remaining Python dependencies are installed from `pyproject.toml` during `pip install -e .`.
+
+```bash
+conda create -n <env_name> python=3.12.12
+conda activate <env_name>
+conda install pip
+pip3 install torch torchvision
+pip install -e .
+```
 
 ## Benchmark datasets
 Fully open-source: LA-UR-26-23746
