@@ -1,0 +1,33 @@
+# Python packages for the CUDA 13 training environment.
+# This captures the pip-installable pieces from Environment/Setup_CUDA_13.txt.
+#
+# Typical usage:
+#   pip install -r requirements.txt
+#   pip install -e . --no-deps
+#
+# Conda environment creation and channel setup still need to be done separately.
+
+--index-url https://download.pytorch.org/whl/cu130
+--extra-index-url https://pypi.org/simple
+
+torch
+torchvision
+torchaudio
+numpy
+scipy
+matplotlib
+kiwisolver
+pandas
+h5py
+xarray
+tqdm
+natsort
+opt_einsum
+einops
+networkx
+typing_extensions
+torchinfo
+torchdiffeq
+pytest
+PyWavelets
+ptwt

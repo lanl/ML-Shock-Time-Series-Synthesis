@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gen_srs_public"
+version = "0.1.0"
+description = "Generative modeling tools for SRS-conditioned time-series synthesis."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "einops>=0.7",
+    "h5py>=3.10",
+    "matplotlib>=3.8",
+    "natsort>=8.4",
+    "networkx>=3.2",
+    "numpy>=1.26",
+    "opt_einsum>=3.3",
+    "pandas>=2.2",
+    "PyWavelets>=1.6",
+    "scipy>=1.11",
+    "torch>=2.2",
+    "torchaudio>=2.2",
+    "torchdiffeq>=0.2.4",
+    "torchinfo>=1.8",
+    "tqdm>=4.66",
+    "xarray>=2024.1.0",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["gen_srs*"]
+
+[tool.setuptools.package-data]
+gen_srs = ["Data/*.m", "Data/*.mlx"]

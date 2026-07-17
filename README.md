@@ -15,7 +15,7 @@ This repository provides three core capabilities:
 ## Getting started
 
 ```
-git clone https://git.lanl.gov/srs_synth/gen_srs_public.git
+git clone https://github.com/lanl/ML-Shock-Time-Series-Synthesis
 cd gen_srs_public
 ```
 
