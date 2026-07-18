@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,9 @@ name = "gen_srs_public"
 version = "0.1.0"
 description = "Generative modeling tools for SRS-conditioned time-series synthesis."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+license-files = ["License.txt"]
 dependencies = [
     "einops>=0.7",
     "h5py>=3.10",
@@ -17,6 +19,7 @@ dependencies = [
     "numpy>=1.26",
     "opt_einsum>=3.3",
     "pandas>=2.2",
+    "ptwt>=1.0.1",
     "PyWavelets>=1.6",
     "scipy>=1.11",
     "torch>=2.2",
@@ -24,14 +27,32 @@ dependencies = [
     "torchdiffeq>=0.2.4",
     "torchinfo>=1.8",
     "tqdm>=4.66",
+    "typing_extensions>=4.10",
     "xarray>=2024.1.0",
 ]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8",
+]
+notebook = [
+    "ipykernel>=6.29",
+]
+dev = [
+    "ipykernel>=6.29",
+    "pytest>=8",
+]
+
+# This assumes gen_srs_public.datasets exposes a callable named main.
+# Update the target if the downloader entry function has a different path.
+[project.scripts]
+gen-srs-datasets = "gen_srs_public.datasets:main"
 
 [tool.setuptools]
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["gen_srs*"]
+include = ["gen_srs_public*"]
 
 [tool.setuptools.package-data]
-gen_srs = ["Data/*.m", "Data/*.mlx"]
+gen_srs_public = ["Data/*.m", "Data/*.mlx"]

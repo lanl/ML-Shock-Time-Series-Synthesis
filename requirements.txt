@@ -1,33 +1,25 @@
-# Python packages for the CUDA 13 training environment.
-# This captures the pip-installable pieces from Environment/Setup_CUDA_13.txt.
+# Core pip-installable dependencies for ML Shock Time Series Synthesis.
 #
-# Typical usage:
-#   pip install -r requirements.txt
-#   pip install -e . --no-deps
+# NVIDIA CUDA 13.0 users should first install:
+#   python -m pip install -r requirements-cu130.txt
 #
-# Conda environment creation and channel setup still need to be done separately.
+# The package itself can then be installed without resolving dependencies again:
+#   python -m pip install -r requirements.txt
+#   python -m pip install -e . --no-deps
 
---index-url https://download.pytorch.org/whl/cu130
---extra-index-url https://pypi.org/simple
-
-torch
-torchvision
-torchaudio
-numpy
-scipy
-matplotlib
-kiwisolver
-pandas
-h5py
-xarray
-tqdm
-natsort
-opt_einsum
-einops
-networkx
-typing_extensions
-torchinfo
-torchdiffeq
-pytest
-PyWavelets
-ptwt
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pandas>=2.2
+h5py>=3.10
+xarray>=2024.1.0
+tqdm>=4.66
+natsort>=8.4
+opt_einsum>=3.3
+einops>=0.7
+networkx>=3.2
+typing_extensions>=4.10
+torchinfo>=1.8
+torchdiffeq>=0.2.4
+PyWavelets>=1.6
+ptwt>=1.0.1

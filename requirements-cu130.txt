@@ -1,0 +1,8 @@
+# Tested PyTorch stack for Linux and Windows with NVIDIA CUDA 13.0.
+# Install this file before requirements.txt.
+
+--index-url https://download.pytorch.org/whl/cu130
+
+torch==2.9.0
+torchvision==0.24.0
+torchaudio==2.9.0
