@@ -12,7 +12,7 @@ This repository provides three core capabilities:
 
 1. **GPU-batched synthetic shock time-series generation at scale.** Generate thousands to hundreds of thousands of shock waveforms using a selected sample rate and basis function.
 2. **GPU-batched Shock Response Spectrum (SRS) computation.** Efficiently produce matched time-series and SRS pairs.
-3. **Four benchmark shock time-series datasets.** The datasets span multiple domains and are pre-cleaned and standardized to a **32,768 Hz** sample rate and approximately **9,000 samples per time series**.
+3. **Four benchmark shock time-series datasets.** The datasets span multiple domains and are pre-cleaned and standardized to a **32,768 Hz** sample rate and **9,000 samples per time series**.
 
 ## Getting started
 
@@ -87,36 +87,9 @@ python -m ipykernel install --user --name <env_name> --display-name "Python (<en
 
 ## Benchmark datasets
 
-The benchmark datasets were approved for public release under **LA-UR-26-23746**.
+The **SRS Benchmark Datasets v1.0.0**, approved for public release under **LA-UR-26-23746**, contain four compact, standardized collections for evaluating machine-learning methods on shock and transient time-series data: one public earthquake-derived dataset, one synthetic dataset, and two anonymized experimental datasets. Each contains multiple fixed-length signals sampled at **32,768 Hz**, with time in seconds and acceleration in G, and is suitable for reconstruction, spectral or wavelet analysis, regression, generative modeling, and synthetic-versus-real generalization studies.
 
-The `.npz` files under `Datasets/` are distributed as release assets rather than bundled package data.
-
-- In a repository checkout, dataset downloads default to the local `Datasets/` directory.
-- In an installed environment, dataset downloads default to a user-writable cache directory.
-- Set `GEN_SRS_DATA_DIR` to override the download location.
-- Set `GEN_SRS_RELEASE_REPO` and, when needed, `GEN_SRS_RELEASE_OWNER` and `GEN_SRS_RELEASE_TAG` to select the release source.
-
-Example on Linux or macOS:
-
-```bash
-export GEN_SRS_RELEASE_OWNER=lanl
-export GEN_SRS_RELEASE_REPO=ML-Shock-Time-Series-Synthesis
-export GEN_SRS_RELEASE_TAG=v0.1.0
-
-gen-srs-datasets
-```
-
-Example in Windows PowerShell:
-
-```powershell
-$env:GEN_SRS_RELEASE_OWNER = "lanl"
-$env:GEN_SRS_RELEASE_REPO = "ML-Shock-Time-Series-Synthesis"
-$env:GEN_SRS_RELEASE_TAG = "v0.1.0"
-
-gen-srs-datasets
-```
-
-Omit `GEN_SRS_RELEASE_TAG` when the downloader should use its configured default release.
+Each benchmark is available as a wide-format CSV archive or as an NPZ archive optimized for NumPy, PyTorch, and `gen_srs_public`; both distributions include JSON metadata describing dimensions, units, sample rate, time range, data types, and source files. The NPZ datasets can be downloaded automatically through [`gen_srs_public/datasets.py`](gen_srs_public/datasets.py): calling `load_dataset("A")` downloads and extracts one requested release asset when it is not already cached, while calling `main()`—including by running `datasets.py` directly—or using `gen-srs-datasets` downloads all four datasets by default. Repository checkouts use `Datasets/` by default, installed packages use a user-writable cache, and `GEN_SRS_DATA_DIR` can override the destination.
 
 ## License
 
